@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1220"><meta name="description" content="Nello Signal: dashboard XAU/USD, analisi tecnica, backtest didattico e gestione del rischio."><title>Nello Signal</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2d;--panel2:#17253a;--line:#2b3b52;--text:#f4f7fb;--muted:#9eb0c8;--gold:#f6c453;--green:#3ed598;--red:#ff6f7d;--blue:#8fc4ff;--orange:#ff995e}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#253958 0,transparent 44%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:10px 13px;font-weight:700}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:var(--gold);color:#211805;border-color:var(--gold)}button.danger{border-color:#753d4a;color:#ffb4bc}a{color:var(--blue)}.wrap{max-width:1180px;margin:auto;padding:17px 13px 44px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(145deg,#ffe08a,#b8790e);display:grid;place-items:center;color:#201704;font-size:25px;font-weight:900}.brand h1{margin:0;font-size:23px;letter-spacing:-.6px}.sub,.note{color:var(--muted);font-size:12px}.pill,.tag{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.card{background:linear-gradient(155deg,rgba(23,37,58,.98),rgba(15,24,39,.98));border:1px solid var(--line);border-radius:17px;padding:16px;min-width:0}.s8{grid-column:span 8}.s6{grid-column:span 6}.s4{grid-column:span 4}.s12{grid-column:span 12}.card h2{font-size:15px;margin:0 0 12px}.row{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}.price{font-size:clamp(30px,6vw,47px);font-weight:850;letter-spacing:-1.5px;margin:5px 0}.label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}.dot{width:8px;height:8px;border-radius:50%;background:#718096}.dot.ok{background:var(--green)}.dot.bad{background:var(--red)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.signal{border:1px solid var(--line);border-radius:13px;padding:13px;background:#0c1523}.signal strong{font-size:24px;display:block}.signal.buy strong{color:var(--green)}.signal.sell strong{color:var(--red)}.signal.wait strong{color:var(--gold)}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}.metric{background:#0c1523;border:1px solid var(--line);border-radius:11px;padding:10px;min-width:0}.metric span{display:block;color:var(--muted);font-size:10px}.metric b{display:block;font-size:17px;overflow-wrap:anywhere}.field{display:flex;flex-direction:column;gap:5px;margin:9px 0}.field label{color:var(--muted);font-size:12px}input[type=file],input[type=number],input[type=text],select,textarea{width:100%;border:1px solid var(--line);background:#0b1422;color:var(--text);padding:10px;border-radius:10px}input[type=checkbox]{accent-color:var(--gold)}.chart{width:100%;height:260px;display:block;background:#0b1422;border:1px solid var(--line);border-radius:12px}.empty{min-height:180px;display:grid;place-items:center;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:20px}.warning{border-left:3px solid var(--gold);background:#2a2418;color:#f3dfb9;padding:10px 12px;border-radius:0 10px 10px 0;font-size:12px;margin-bottom:13px}.okbox{border-left:3px solid var(--green);background:#11271f;padding:10px 12px;border-radius:0 10px 10px 0;font-size:12px}.list{display:grid;gap:7px}.item{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.item small{display:block;color:var(--muted)}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.tabs button{font-size:12px;padding:8px 10px}.tabs button.active{border-color:var(--gold);color:var(--gold)}.hidden{display:none!important}.footer{text-align:center;color:var(--muted);font-size:11px;margin-top:17px}.kpi{font-size:25px;font-weight:800}.photo{max-width:100%;max-height:260px;border-radius:12px;display:block;margin-top:10px}.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checkline{display:flex;gap:8px;align-items:flex-start;margin:8px 0}.smallbtn{padding:7px 9px;font-size:12px}
+@media(max-width:760px){.s8,.s6,.s4{grid-column:span 12}.wrap{padding:12px 9px 28px}.card{padding:13px}.top{align-items:flex-start}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metric b{font-size:15px}.split{grid-template-columns:1fr}}
+</style></head>
+<body><main class="wrap">
+<header class="top"><div class="brand"><div class="logo">N</div><div><h1>Nello Signal</h1><div class="sub">XAU/USD · ANALISI · RISCHIO · TEST</div></div></div><span class="pill">FILE UNICO · BETA</span></header>
+<div class="warning"><b>Trasparenza:</b> TradingView visualizza il grafico incorporato; per i calcoli automatici Nello Signal richiede candele OHLC da un feed separato XAUS (API gratuita, senza chiave). Il feed può differire dal simbolo OANDA:XAUUSD mostrato su TradingView e può essere in ritardo. Se i dati sono vecchi o non disponibili, il segnale viene bloccato. Nessun ordine broker viene inviato.</div>
+<nav class="tabs"><button class="active" data-tab="dashboard">Dashboard</button><button data-tab="history">Backtest & storico</button><button data-tab="photo">Foto / AI</button><button data-tab="settings">Impostazioni</button></nav>
+<section id="tab-dashboard" class="tabpane grid">
+<div class="card s8"><div class="row"><h2>Mercato · Oro XAU/USD</h2><span class="status"><i class="dot ok"></i><span>Grafico TradingView incorporato</span></span></div><p class="note">Scegli il timeframe del grafico. La disponibilità e l'eventuale ritardo dei dati dipendono dal fornitore mostrato da TradingView.</p><div class="tabs" id="tvTimeframes" aria-label="Timeframe del grafico"><button type="button" data-tv-interval="1" data-tv-label="M1">M1</button><button type="button" data-tv-interval="5" data-tv-label="M5">M5</button><button type="button" data-tv-interval="15" data-tv-label="M15" class="active">M15</button><button type="button" data-tv-interval="30" data-tv-label="M30">M30</button><button type="button" data-tv-interval="60" data-tv-label="H1">H1</button><button type="button" data-tv-interval="240" data-tv-label="H4">H4</button><button type="button" data-tv-interval="D" data-tv-label="D1">D1</button><button type="button" data-tv-interval="W" data-tv-label="W1">W1</button><button type="button" data-tv-interval="M" data-tv-label="1M">1M</button></div><div id="tvChartMount" class="tradingview-widget-container" style="width:100%;min-height:420px"><div class="empty">Caricamento grafico TradingView…</div></div><div class="warning" style="margin-top:10px"><b>Feed per i segnali:</b> il motore recupera le candele OHLC dall’API XAUS quando premi “Genera segnale adesso”. È una fonte distinta dal widget TradingView; controlla sempre timestamp e quotazione del broker prima di operare.</div><div id="feedDot" class="hidden"></div><span id="feedStatus" class="hidden">Widget TradingView</span><span id="spotPrice" class="hidden">—</span><span id="spotStamp" class="hidden">Widget TradingView incorporato</span><button id="refreshSpot" class="hidden" type="button">Aggiorna prezzo</button><button id="toggleAuto" class="hidden" type="button">OFF</button></div>
+<div class="card s4"><h2>Segnale tecnico</h2><div id="signalBox" class="signal wait"><span class="label">Decisione sui dati importati</span><strong id="signalText">STAI FERMO</strong><div id="signalReason" class="note">Importa candele OHLC reali per iniziare l'analisi locale.</div></div><div class="metrics" id="tradeLevels" style="margin-top:10px"><div class="metric"><span>ENTRY · ingresso</span><b id="entryLevel">—</b></div><div class="metric"><span>STOP LOSS</span><b id="slLevel">—</b></div><div class="metric"><span>TAKE PROFIT</span><b id="tpLevel">—</b></div></div><p class="note" id="levelsNote">I livelli vengono calcolati solo da candele OHLC importate: ingresso all'ultima chiusura, SL a 1,5×ATR e TP a 2× il rischio. Non sono prezzi live di TradingView.</p><button id="generateSignalNow" type="button" class="primary" style="width:100%;margin-top:10px">Genera segnale adesso</button><div id="signalNowStatus" class="note" style="margin-top:8px">Premi per scaricare candele del timeframe selezionato e calcolare il segnale. Serve una connessione Internet.</div><div class="field"><label>Analisi tecnica TradingView · timeframe selezionato</label><div id="tvAnalysisMount" class="tradingview-widget-container" style="min-height:240px"><div class="empty">Premi “Genera segnale adesso” per caricare l'analisi tecnica TradingView.</div></div></div><div class="metrics"><div class="metric"><span>Timeframe CSV</span><b id="tfLabel">M15</b></div><div class="metric"><span>RSI 14</span><b id="rsiVal">—</b></div><div class="metric"><span>ATR/close</span><b id="atrVal">—</b></div></div><div class="field"><label for="timeframe">Timeframe delle candele per il segnale</label><select id="timeframe"><option>M1</option><option>M5</option><option selected>M15</option><option>M30</option><option>H1</option><option>H4</option><option>D1</option><option>W1</option><option>1M</option></select></div></div>
+<div class="card s8"><div class="row"><h2>Grafico candlestick OHLC</h2><span id="barCount" class="tag">0 candele</span></div><div id="chartEmpty" class="empty">Importa un CSV reale con almeno 30 candele.<br>Colonne: time, open, high, low, close (volume opzionale).</div><svg id="chart" class="chart hidden" viewBox="0 0 900 260" preserveAspectRatio="none" role="img" aria-label="Grafico candlestick dei dati importati"></svg><div class="actions"><input id="csvFile" type="file" accept=".csv,text/csv" aria-label="Importa CSV OHLC"><button id="removeCsv" class="danger">Rimuovi candele</button><button id="exportBars">Esporta dati CSV</button></div><div id="csvStatus" class="note">Nessun dato caricato.</div></div>
+<div class="card s4"><h2>Calcolatore rischio</h2><div class="field"><label for="capital">Capitale conto (€)</label><input id="capital" type="number" min="1" step="50" value="500"></div><div class="field"><label for="riskPct">Rischio per operazione (%)</label><input id="riskPct" type="number" min="0.1" max="2" step="0.1" value="0.5"></div><div class="field"><label for="entryPrice">Ingresso (USD/oz)</label><input id="entryPrice" type="number" min="0.01" step="0.01" placeholder="Prezzo di ingresso"></div><div class="field"><label for="stopPrice">Stop Loss (USD/oz)</label><input id="stopPrice" type="number" min="0.01" step="0.01" placeholder="Prezzo stop"></div><button id="calculateRisk" class="primary" style="width:100%">Calcola rischio</button><div id="riskOutput" class="note" style="margin-top:10px">Stima didattica; non calcola lotti broker, cambio EUR/USD, margine, spread o commissioni.</div></div>
+<div class="card s6"><h2>Calendario economico</h2><p class="note">Non è integrato un feed di eventi verificato. Apri una fonte esterna e controlla data, impatto e fuso orario prima di operare.</p><div class="actions"><a href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener noreferrer">Forex Factory ↗</a><a href="https://www.investing.com/economic-calendar/" target="_blank" rel="noopener noreferrer">Investing.com ↗</a><a href="https://www.marketwatch.com/economy-politics/calendar" target="_blank" rel="noopener noreferrer">MarketWatch ↗</a></div><div class="warning">Il sistema non blocca automaticamente i segnali in prossimità delle notizie: non riceve un calendario strutturato.</div></div>
+<div class="card s6"><h2>Paper trading</h2><p class="note">Simulazione manuale su dati storici importati; non invia ordini e non è un broker demo live.</p><div class="row"><button id="paperBuy">Registra BUY al close più recente</button><button id="paperSell">Registra SELL al close più recente</button></div><div id="paperStatus" class="note" style="margin-top:9px">Importa le candele per abilitare la registrazione.</div><div id="paperTrades" class="list" style="margin-top:9px"></div><button id="clearPaper" class="smallbtn danger">Cancella paper trading</button></div>
+<div class="card s12"><h2>Controlli di sicurezza</h2><div id="healthList" class="list"><div class="item">Nessun controllo ancora eseguito.</div></div><div class="actions"><button id="runChecks" class="primary">Esegui test locali</button><button id="downloadReport">Esporta rapporto test</button></div><p class="note">I test verificano alcune regole software, non certificano redditività o accuratezza futura.</p></div>
+</section>
+<section id="tab-history" class="tabpane grid hidden"><div class="card s8"><h2>Backtest semplice EMA 9/21 + RSI 14</h2><p class="note">Solo sui dati CSV caricati. Entrata alla chiusura della candela successiva al segnale, uscita quando la direzione EMA si inverte. Esclude spread, commissioni e slippage: risultati non rappresentano performance reali.</p><div class="metrics"><div class="metric"><span>Operazioni chiuse</span><b id="btCount">—</b></div><div class="metric"><span>Percentuale positive</span><b id="btWin">—</b></div><div class="metric"><span>Rendimento punti</span><b id="btPoints">—</b></div></div><div class="actions"><button id="runBacktest" class="primary">Esegui backtest</button><button id="exportBacktest">Esporta risultati CSV</button></div><div id="backtestList" class="list"></div></div><div class="card s4"><h2>Storico segnali</h2><p class="note">I segnali generati da CSV vengono memorizzati solo nella sessione corrente, non sono un archivio persistente.</p><div id="signalHistory" class="list"><div class="item">Nessun segnale calcolato.</div></div><button id="clearSignalHistory" class="smallbtn danger">Cancella storico</button></div><div class="card s12"><h2>Statistiche e limiti</h2><div id="backtestNotes" class="note">Il backtest non è disponibile finché non importi dati OHLC reali.</div></div></section>
+<section id="tab-photo" class="tabpane grid hidden"><div class="card s6"><h2>Carica uno screenshot del grafico</h2><div class="field"><label for="chartPhoto">Immagine PNG/JPG/WebP</label><input id="chartPhoto" type="file" accept="image/*"></div><img id="photoPreview" class="photo hidden" alt="Anteprima locale dello screenshot"><div id="photoStatus" class="note">Nessuna immagine selezionata.</div></div><div class="card s6"><h2>Stato analisi visiva</h2><div class="warning">La versione attuale non include un modello AI vision. L'immagine viene visualizzata localmente e non viene inviata a nessun servizio.</div><p class="note">Per attivare una vera analisi AI occorre scegliere un modello e un endpoint. Una chiave segreta non deve essere inserita in un sito statico pubblico. I servizi gratuiti possono avere limiti, code o modificare le condizioni.</p><label class="checkline"><input type="checkbox" id="confirmImagePrivacy"> Ho capito che in questa build non viene eseguita alcuna analisi AI.</label><div id="visionChecklist" class="note">Funzione AI: non configurata.</div></div></section>
+<section id="tab-settings" class="tabpane grid hidden"><div class="card s6"><h2>Fonte e aggiornamento</h2><div class="field"><label>Endpoint prezzo spot</label><input type="text" value="Widget ufficiale TradingView · OANDA:XAUUSD" readonly></div><div class="field"><label for="autoSeconds">Intervallo aggiornamento automatico (secondi)</label><select id="autoSeconds"><option value="60" selected>60 (consigliato)</option><option value="300">300 (5 minuti)</option><option value="900">900 (15 minuti)</option></select></div><p class="note">L'intervallo è una preferenza del client, non un SLA. Rispetta i limiti del fornitore. Il feed spot non fornisce le candele OHLC usate dal motore tecnico.</p></div><div class="card s6"><h2>Configurazione futura broker</h2><p class="note">Non inserire qui password, token o chiavi. Nessun collegamento broker è attivo. Prima di aggiungerlo serviranno API ufficiali, permessi minimi, ambiente demo, regole di rischio e test separati.</p><div class="okbox">Operatività attuale: solo analisi manuale e paper trading locale sui dati caricati.</div></div><div class="card s12"><h2>Checklist completamento</h2><div class="list"><div class="item"><span>Grafico / quotazione visuale</span><b>Widget TradingView incorporato</b></div><div class="item"><span>Segnali EMA/RSI/ATR da CSV</span><b>Implementato, non validato</b></div><div class="item"><span>Backtest storico di base</span><b>Implementato, semplificato</b></div><div class="item"><span>Paper trading locale su CSV</span><b>Implementato, non live</b></div><div class="item"><span>AI vision</span><b>Non configurata</b></div><div class="item"><span>Calendario integrato</span><b>Non configurato</b></div><div class="item"><span>Feed automatico OHLC</span><b>Non configurato</b></div><div class="item"><span>Ordini broker</span><b>Non implementati</b></div></div></div></section>
+<footer class="footer">Nello Signal non è consulenza finanziaria. I risultati storici non garantiscono risultati futuri. Controlla sempre i prezzi e le condizioni del tuo broker.</footer></main>
+<script>
+
+/* --- Analisi tecnica --- */
+function ema(values, period) {
+  if (!values.length || period < 1) return [];
+  const alpha = 2 / (period + 1); let prev = values[0];
+  return values.map((v, i) => { prev = i === 0 ? v : v * alpha + prev * (1 - alpha); return prev; });
+}
+function rsi(values, period = 14) {
+  if (values.length <= period) return null;
+  let gain = 0, loss = 0;
+  for (let i = values.length - period; i < values.length; i++) {
+    const d = values[i] - values[i - 1]; if (d > 0) gain += d; else loss -= d;
+  }
+  if (loss === 0) return gain === 0 ? 50 : 100;
+  const rs = (gain / period) / (loss / period); return 100 - (100 / (1 + rs));
+}
+function atr(bars, period = 14) {
+  if (bars.length < period + 1) return null;
+  const trs = [];
+  for (let i = bars.length - period; i < bars.length; i++) {
+    const b = bars[i], prev = bars[i - 1].close;
+    trs.push(Math.max(b.high - b.low, Math.abs(b.high - prev), Math.abs(b.low - prev)));
+  }
+  return trs.reduce((a, b) => a + b, 0) / trs.length;
+}
+function evaluate(bars, atrLimitPct = 1.2) {
+  if (bars.length < 30) return { signal: 'STAI FERMO', reason: 'Servono almeno 30 candele OHLC valide.', rsi: null, atr: null, ema9: null, ema21: null };
+  const closes = bars.map(b => b.close), e9 = ema(closes, 9), e21 = ema(closes, 21), rv = rsi(closes, 14), av = atr(bars, 14), last = bars.at(-1);
+  const atrPct = av / last.close * 100; let signal = 'STAI FERMO', reason = 'Confluenza insufficiente: nessun segnale.';
+  if (e9.at(-1) > e21.at(-1) && rv >= 52 && rv <= 70) { signal = 'POSSIBILE COMPRA'; reason = 'EMA 9 sopra EMA 21 e RSI tra 52 e 70.'; }
+  else if (e9.at(-1) < e21.at(-1) && rv <= 48 && rv >= 30) { signal = 'POSSIBILE VENDI'; reason = 'EMA 9 sotto EMA 21 e RSI tra 30 e 48.'; }
+  if (atrPct > atrLimitPct) { signal = 'STAI FERMO'; reason = `Filtro volatilità: ATR/close ${atrPct.toFixed(2)}% oltre la soglia ${atrLimitPct.toFixed(2)}%. ` + reason; }
+  return { signal, reason, rsi: rv, atr: av, atrPct, ema9: e9.at(-1), ema21: e21.at(-1), close: last.close, time: last.time };
+}
+function parseCsv(raw) {
+  const lines = raw.replace(/^\uFEFF/, '').trim().split(/\r?\n/);
+  if (lines.length < 2) throw new Error('CSV vuoto o senza righe dati.');
+  const sep = (lines[0].match(/;/g) || []).length > (lines[0].match(/,/g) || []).length ? ';' : ',';
+  const headers = lines.shift().split(sep).map(s => s.trim().toLowerCase().replace(/["']/g, ''));
+  const timeIndex = ['time','timestamp','date','datetime'].map(k => headers.indexOf(k)).find(i => i >= 0);
+  const indexes = Object.fromEntries(['open','high','low','close','volume'].map(k => [k, headers.indexOf(k)]));
+  if (timeIndex == null || ['open','high','low','close'].some(k => indexes[k] < 0)) throw new Error('Intestazioni richieste: time,open,high,low,close (volume opzionale).');
+  const out = [];
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const cells = line.split(sep).map(s => s.trim().replace(/^"|"$/g, ''));
+    const parseNum = v => Number(String(v ?? '').replace(',', '.'));
+    let t = cells[timeIndex], n = Number(t), ms;
+    if (Number.isFinite(n) && n >= 1e12) ms = n; else if (Number.isFinite(n) && n >= 1e9) ms = n * 1000; else ms = Date.parse(t);
+    const b = { time: Math.floor(ms / 1000), open: parseNum(cells[indexes.open]), high: parseNum(cells[indexes.high]), low: parseNum(cells[indexes.low]), close: parseNum(cells[indexes.close]) };
+    if (!Number.isFinite(b.time) || ['open','high','low','close'].some(k => !Number.isFinite(b[k]) || b[k] <= 0)) continue;
+    if (b.high < Math.max(b.open, b.close, b.low) || b.low > Math.min(b.open, b.close, b.high)) continue;
+    out.push(b);
+  }
+  out.sort((a,b) => a.time - b.time); const unique = [];
+  for (const b of out) { if (unique.length && unique.at(-1).time === b.time) unique[unique.length - 1] = b; else unique.push(b); }
+  if (unique.length < 30) throw new Error(`Solo ${unique.length} candele valide. Ne servono almeno 30.`);
+  return unique;
+}
+function backtest(bars) {
+  if (bars.length < 35) throw new Error('Il backtest richiede almeno 35 candele.');
+  const closes = bars.map(b => b.close), e9 = ema(closes, 9), e21 = ema(closes, 21), trades = [];
+  let pos = null;
+  for (let i = 22; i < bars.length - 1; i++) {
+    const rv = rsi(closes.slice(0, i + 1), 14);
+    let dir = e9[i] > e21[i] && rv >= 52 && rv <= 70 ? 'BUY' : e9[i] < e21[i] && rv <= 48 && rv >= 30 ? 'SELL' : null;
+    if (pos && (dir !== pos.side)) { const exit = bars[i + 1].open; const points = pos.side === 'BUY' ? exit - pos.entry : pos.entry - exit; trades.push({ side: pos.side, entry: pos.entry, exit, points, entryTime: bars[pos.index].time, exitTime: bars[i + 1].time }); pos = null; }
+    if (!pos && dir) pos = { side: dir, entry: bars[i + 1].open, index: i + 1 };
+  }
+  if (pos) { const exit = bars.at(-1).close; trades.push({ side: pos.side, entry: pos.entry, exit, points: pos.side === 'BUY' ? exit - pos.entry : pos.entry - exit, entryTime: bars[pos.index].time, exitTime: bars.at(-1).time }); }
+  const wins = trades.filter(t => t.points > 0).length;
+  return { trades, wins, winRate: trades.length ? wins / trades.length * 100 : 0, points: trades.reduce((a,t) => a + t.points, 0) };
+}
+
+/* --- Fonte prezzo spot --- */
+const SPOT_ENDPOINT = 'https://xaus.com/api/v1/spot?compact=1';
+async function fetchSpot() {
+  const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 10000);
+  try {
+    const res = await fetch(SPOT_ENDPOINT, { cache: 'no-store', signal: controller.signal, headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const price = Number(data?.spot_usd_oz ?? data?.xau?.price ?? data?.price);
+    if (!Number.isFinite(price) || price <= 0) throw new Error('La fonte non ha restituito un prezzo XAU/USD valido.');
+    const timestamp = data?.data_state?.as_of || data?.updated_at || data?.xau?.updated_at || null;
+    const date = timestamp ? new Date(timestamp) : null;
+    const ageSeconds = Number(data?.data_state?.age_seconds);
+    const status = data?.data_state?.status || 'unknown';
+    const ageMs = Number.isFinite(ageSeconds) ? ageSeconds * 1000 : (date && !Number.isNaN(date.getTime()) ? Date.now() - date.getTime() : Infinity);
+    const stale = status === 'stale' || status === 'unavailable' || !date || Number.isNaN(date.getTime()) || ageMs > 10 * 60 * 1000;
+    return { price, timestamp, stale, status, ageSeconds: Number.isFinite(ageSeconds) ? ageSeconds : Math.max(0, Math.floor(ageMs/1000)), raw: data };
+  } finally { clearTimeout(timer); }
+}
+
+/* --- Grafico --- */
+function drawCandles(svg, bars) {
+  if (!bars.length) return;
+  const w = 900, h = 260, pad = { l: 15, r: 15, t: 14, b: 18 };
+  const lo = Math.min(...bars.map(b => b.low)), hi = Math.max(...bars.map(b => b.high)), range = hi - lo || 1;
+  const x = i => pad.l + i * (w - pad.l - pad.r) / Math.max(1, bars.length - 1), y = v => pad.t + (hi - v) * (h - pad.t - pad.b) / range;
+  let s = '';
+  for (let j=0;j<5;j++) { const yy=pad.t+j*(h-pad.t-pad.b)/4; s += `<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#2b3b52"/>`; }
+  const step = (w - pad.l - pad.r) / bars.length, cw = Math.max(1.5, Math.min(9, step * .58));
+  bars.forEach((b,i) => { const xx=x(i), up=b.close>=b.open, col=up?'#3ed598':'#ff6f7d'; s+=`<line x1="${xx}" y1="${y(b.high)}" x2="${xx}" y2="${y(b.low)}" stroke="${col}"/>`; const yy=Math.min(y(b.open),y(b.close)), hh=Math.max(1,Math.abs(y(b.open)-y(b.close))); s+=`<rect x="${xx-cw/2}" y="${yy}" width="${cw}" height="${hh}" fill="${col}"/>`; });
+  svg.innerHTML = s;
+}
+
+/* --- Applicazione --- */
+const $ = id => document.getElementById(id); let bars = [], autoTimer = null, currentEval = null, signalHistory = [], paperTrades = [], bt = null, barsSource='none', liveLastTimestamp=null;
+const fmt = n => Number(n).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
+let tvInterval='15', tvLabel='M15';
+const tvToTf={'1':'M1','5':'M5','15':'M15','30':'M30','60':'H1','240':'H4','D':'D1','W':'W1','M':'1M'};
+const tfToApi={'M1':{interval:'1m',range:'1d'},'M5':{interval:'5m',range:'5d'},'M15':{interval:'15m',range:'5d'},'M30':{interval:'30m',range:'1mo'},'H1':{interval:'60m',range:'3mo'},'H4':{interval:'60m',range:'1mo',aggregate:4},'D1':{interval:'1d',range:'1y'},'W1':{interval:'1wk',range:'5y'},'1M':{interval:'1mo',range:'5y'}};
+function mountTvChart(interval){
+  tvInterval=interval;
+  const mount=$('tvChartMount');
+  mount.innerHTML='';
+  const container=document.createElement('div'); container.className='tradingview-widget-container__widget';
+  container.style.width='100%'; container.style.height='420px'; mount.appendChild(container);
+  const script=document.createElement('script'); script.type='text/javascript'; script.async=true; script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+  const config={autosize:true,symbol:'OANDA:XAUUSD',interval:interval,timezone:'Europe/Rome',theme:'dark',style:'1',locale:'it',allow_symbol_change:false,calendar:false,hide_top_toolbar:false,hide_legend:false,save_image:false,details:false,hotlist:false,withdateranges:true,hide_side_toolbar:true,studies:[],support_host:'https://www.tradingview.com'};
+  script.text=JSON.stringify(config); mount.appendChild(script);
+  document.querySelectorAll('#tvTimeframes button').forEach(b=>b.classList.toggle('active',b.dataset.tvInterval===interval));
+}
+function mountTvAnalysis(){
+  const mount=$('tvAnalysisMount'); mount.innerHTML='';
+  const wrap=document.createElement('div'); wrap.className='tradingview-widget-container'; wrap.style.width='100%';
+  const widget=document.createElement('div'); widget.className='tradingview-widget-container__widget'; wrap.appendChild(widget);
+  const script=document.createElement('script'); script.type='text/javascript'; script.async=true; script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';
+  const intervals={'1':'1m','5':'5m','15':'15m','30':'30m','60':'1h','240':'4h','D':'1D','W':'1W','M':'1M'};
+  script.text=JSON.stringify({interval:intervals[tvInterval]||'15m',width:'100%',isTransparent:true,height:240,symbol:'OANDA:XAUUSD',showIntervalTabs:false,displayMode:'single',locale:'it',colorTheme:'dark'});
+  wrap.appendChild(script); mount.appendChild(wrap);
+  $('signalNowStatus').textContent='Richiesta aggiornata: analisi tecnica TradingView per XAU/USD · '+tvLabel+'. Leggi il riepilogo BUY/SELL/NEUTRAL nel riquadro; i dati e il rating sono forniti da TradingView.';
+}
+document.querySelectorAll('#tvTimeframes button').forEach(b=>b.addEventListener('click',()=>{tvLabel=b.dataset.tvLabel;mountTvChart(b.dataset.tvInterval);$('timeframe').value=tvLabel;$('tfLabel').textContent=tvLabel;$('signalNowStatus').textContent='Timeframe '+tvLabel+' selezionato. Premi “Genera segnale adesso” per scaricare le candele e calcolare il segnale.';}));
+async function fetchLiveCandles(tf){
+ const cfg=tfToApi[tf]||tfToApi.M15;
+ const url='https://xaus.com/api/v1/chart?symbol=xau&range='+encodeURIComponent(cfg.range)+'&interval='+encodeURIComponent(cfg.interval);
+ const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),12000);
+ try{
+  const res=await fetch(url,{cache:'no-store',signal:controller.signal,headers:{'Accept':'application/json'}});
+  if(!res.ok)throw new Error('API OHLC HTTP '+res.status);
+  const data=await res.json();
+  if(data?.data_state?.status==='unavailable'||data?.data_state?.status==='stale')throw new Error('La fonte segnala dati '+data.data_state.status+'; per sicurezza non genero un segnale.');
+  let pts=data.points||data.data||data.candles||data.ohlc||[];
+  if(!Array.isArray(pts)||!pts.length)throw new Error('La fonte non ha restituito candele OHLC.');
+  let out=pts.map(p=>({time:Number(p.t??p.time??p.timestamp),open:Number(p.o??p.open),high:Number(p.h??p.high),low:Number(p.l??p.low),close:Number(p.c??p.close)}))
+   .map(b=>({...b,time:b.time>1e12?Math.floor(b.time/1000):Math.floor(b.time)}))
+   .filter(b=>Number.isFinite(b.time)&&[b.open,b.high,b.low,b.close].every(Number.isFinite)&&b.open>0&&b.high>0&&b.low>0&&b.close>0&&b.high>=Math.max(b.open,b.close,b.low)&&b.low<=Math.min(b.open,b.close,b.high))
+   .sort((a,b)=>a.time-b.time);
+  const unique=[];for(const b of out){if(unique.length&&unique.at(-1).time===b.time)unique[unique.length-1]=b;else unique.push(b);}
+  out=unique;
+  if(cfg.aggregate){const groups=new Map();for(const b of out){const key=Math.floor(b.time/(cfg.aggregate*3600));if(!groups.has(key))groups.set(key,[]);groups.get(key).push(b);}out=[...groups.values()].filter(g=>g.length>=Math.max(2,cfg.aggregate-1)).map(g=>({time:g[0].time,open:g[0].open,high:Math.max(...g.map(b=>b.high)),low:Math.min(...g.map(b=>b.low)),close:g[g.length-1].close}));}
+  if(out.length<30)throw new Error('La fonte ha restituito solo '+out.length+' candele valide; ne servono almeno 30.');
+  const last=out.at(-1),age=Math.max(0,Date.now()-last.time*1000),maxAge=tf==='D1'?72*3600000:tf==='W1'?10*86400000:tf==='1M'?45*86400000:tf==='H4'?8*3600000:30*60000;
+  if(age>maxAge)throw new Error('Ultima candela troppo vecchia ('+Math.round(age/60000)+' min). Nessun segnale generato.');
+  return {bars:out,lastTime:last.time,source:'XAUS OHLC API',ageMs:age};
+ }finally{clearTimeout(timer);}
+}
+async function generateLiveSignal(){
+ const tf=tvLabel,btn=$('generateSignalNow');btn.disabled=true;$('signalNowStatus').textContent='Scarico candele reali per '+tf+'…';setFeed(false,'Caricamento candele…');
+ try{const result=await fetchLiveCandles(tf);bars=result.bars;barsSource=result.source;liveLastTimestamp=result.lastTime;$('timeframe').value=tf;renderBars();const e=evaluate(bars);setSignal(e);$('csvStatus').textContent='Feed automatico XAUS · '+bars.length+' candele · timeframe '+tf+' · ultima candela '+dateFmt(liveLastTimestamp*1000)+'.';$('signalNowStatus').textContent='Analisi completata alle '+new Date().toLocaleTimeString('it-IT')+' · fonte XAUS OHLC · '+tf+' · ultima candela '+dateFmt(liveLastTimestamp*1000)+'. Verifica il prezzo col broker: il feed può differire dal widget OANDA:XAUUSD.';setFeed(true,'Candele ricevute · '+tf);mountTvAnalysis();
+ }catch(err){setFeed(false,'Feed non disponibile');if(barsSource==='XAUS OHLC API'){bars=[];barsSource='none';renderBars();}$('signalNowStatus').textContent='Segnale live non generato: '+err.message+' Se la fonte è bloccata dal browser, riprova da una pagina HTTPS. Nessun prezzo inventato è usato.';$('levelsNote').textContent='ENTRY, SL e TP restano vuoti perché non sono state verificate candele recenti.';$('entryLevel').textContent=$('slLevel').textContent=$('tpLevel').textContent='—';}
+ finally{btn.disabled=false;}
+}
+$('generateSignalNow').addEventListener('click',generateLiveSignal);
+mountTvChart(tvInterval);
+const dateFmt = t => { if (!t) return 'timestamp non fornito'; const d = new Date(t); return Number.isNaN(d.getTime()) ? String(t) : d.toLocaleString('it-IT',{dateStyle:'short',timeStyle:'medium'}); };
+function setFeed(ok,msg){ $('feedDot').className='dot '+(ok?'ok':'bad'); $('feedStatus').textContent=msg; }
+function setSignal(result){
+ currentEval=result;
+ $('signalText').textContent=result.signal;
+ $('signalReason').textContent=result.reason+' Fonte: '+(barsSource==='none'?'nessuna':barsSource)+'. Controlla timestamp e quotazione del broker.';
+ $('signalBox').className='signal '+(result.signal.includes('COMPRA')?'buy':result.signal.includes('VENDI')?'sell':'wait');
+ $('rsiVal').textContent=result.rsi==null?'—':result.rsi.toFixed(1);
+ $('atrVal').textContent=result.atrPct==null?'—':result.atrPct.toFixed(2)+'%';
+ $('tfLabel').textContent=$('timeframe').value;
+ const isBuy=result.signal.includes('COMPRA'), isSell=result.signal.includes('VENDI');
+ if((isBuy||isSell)&&Number.isFinite(result.close)&&Number.isFinite(result.atr)&&result.atr>0){
+   const entry=result.close, riskDistance=result.atr*1.5;
+   const sl=isBuy?entry-riskDistance:entry+riskDistance;
+   const tp=isBuy?entry+riskDistance*2:entry-riskDistance*2;
+   $('entryLevel').textContent=fmt(entry); $('slLevel').textContent=fmt(sl); $('tpLevel').textContent=fmt(tp);
+   $('levelsNote').textContent='Stima tecnica: ENTRY = ultima chiusura della candela; SL = 1,5×ATR; TP = 2× la distanza ENTRY–SL (rapporto teorico 1:2). Fonte '+(barsSource==='none'?'non specificata':barsSource)+'. Il prezzo può differire dal broker; spread/slippage esclusi.';
+ } else {
+   $('entryLevel').textContent='—'; $('slLevel').textContent='—'; $('tpLevel').textContent='—';
+   $('levelsNote').textContent=bars.length<30?'Servono almeno 30 candele OHLC valide e recenti per calcolare il segnale e i livelli.':'Nessun BUY/SELL valido: non vengono proposti ENTRY, SL o TP quando la decisione è STAI FERMO o l’ATR non è disponibile.';
+ }
+ if(bars.length){signalHistory.unshift({time:Date.now(),signal:result.signal,close:result.close,tf:$('timeframe').value,reason:result.reason}); signalHistory=signalHistory.slice(0,20); renderSignalHistory();}
+}
+async function refreshSpot(){ $('refreshSpot').disabled=true; setFeed(false,'Connessione alla fonte…'); try { const q=await fetchSpot(); $('spotPrice').textContent=fmt(q.price); const age = q.ageSeconds < 60 ? `${q.ageSeconds} secondi` : `${Math.floor(q.ageSeconds/60)} min`; $('spotStamp').textContent='Dato aggiornato: '+dateFmt(q.timestamp)+' · età indicata: '+age+(q.stale?' · DATO VECCHIO/ NON USARE':' · prezzo spot indicativo'); setFeed(!q.stale,q.stale?'Dato obsoleto · non usare per segnali':'Prezzo ricevuto · stato '+q.status); } catch(e) { setFeed(false,'Feed non disponibile'); $('spotStamp').textContent='Connessione fallita: '+e.message+'. Potrebbe essere un errore della fonte o una limitazione del browser sul file locale. Nessun prezzo precedente viene mostrato come aggiornato.'; } finally { $('refreshSpot').disabled=false; } }
+// Il grafico TradingView è solo visuale; il motore scarica OHLC da XAUS quando l'utente preme il pulsante.
+setFeed(false,'In attesa di caricare le candele'); $('spotStamp').textContent='Il feed OHLC viene richiesto quando premi Genera segnale adesso.';
+function renderBars(){ $('chartEmpty').classList.toggle('hidden',bars.length>0); $('chart').classList.toggle('hidden',bars.length===0); $('barCount').textContent=bars.length+' candele'; if(bars.length){drawCandles($('chart'),bars);setSignal(evaluate(bars));$('csvStatus').textContent=`${barsSource==='csv'?'Importate':'Ricevute da '+barsSource} ${bars.length} candele. Prima: ${dateFmt(bars[0].time*1000)} · ultima: ${dateFmt(bars.at(-1).time*1000)}.`;} else {setSignal({signal:'STAI FERMO',reason:'Carica candele OHLC reali per iniziare l’analisi.',rsi:null,atr:null,atrPct:null});$('csvStatus').textContent='Nessun dato caricato.';} }
+$('csvFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{bars=parseCsv(await f.text());barsSource='csv';liveLastTimestamp=null;bt=null;renderBars();$('backtestNotes').textContent='Dati caricati: esegui il backtest per calcolare statistiche didattiche.';}catch(err){bars=[];renderBars();$('csvStatus').textContent='Importazione non riuscita: '+err.message;} });
+$('removeCsv').addEventListener('click',()=>{bars=[];barsSource='none';liveLastTimestamp=null;bt=null;$('csvFile').value='';renderBars();$('btCount').textContent=$('btWin').textContent=$('btPoints').textContent='—';$('backtestList').innerHTML='';$('backtestNotes').textContent='Il backtest non è disponibile finché non importi dati OHLC reali.';}); $('timeframe').addEventListener('change',()=>{ const tf=$('timeframe').value; $('tfLabel').textContent=tf; const map={'M1':'1','M5':'5','M15':'15','M30':'30','H1':'60','H4':'240','D1':'D','W1':'W','1M':'M'}; tvLabel=tf; mountTvChart(map[tf]||'15'); if(bars.length)setSignal(evaluate(bars)); });
+$('calculateRisk').addEventListener('click',()=>{const cap=Number($('capital').value),risk=Number($('riskPct').value),entry=Number($('entryPrice').value),stop=Number($('stopPrice').value);if(!(cap>0&&risk>=0.1&&risk<=2&&entry>0&&stop>0&&entry!==stop)){$('riskOutput').textContent='Controlla i valori: capitale e prezzi positivi, rischio tra 0,1% e 2%, ingresso diverso dallo stop.';return;}const maxLoss=cap*risk/100,dist=Math.abs(entry-stop),units=maxLoss/dist;$('riskOutput').textContent=`Perdita teorica impostata: €${fmt(maxLoss)}. Distanza stop: ${fmt(dist)} USD/oz. Rapporto matematico: ${units.toFixed(4)} oz equivalenti prima di conversione EUR/USD, contratto, spread, commissioni e slippage. Non è un lotto broker.`;});
+$('exportBars').addEventListener('click',()=>{if(!bars.length)return alert('Importa prima un CSV.');download('nello-signal-candele.csv','time,open,high,low,close\n'+bars.map(b=>[new Date(b.time*1000).toISOString(),b.open,b.high,b.low,b.close].join(',')).join('\n'));});
+function renderPaper(){ $('paperStatus').textContent=bars.length?`${paperTrades.length} registrazioni paper nella sessione corrente. Ultimo close: ${fmt(bars.at(-1).close)}.`:'Importa le candele per abilitare la registrazione.'; $('paperTrades').innerHTML=paperTrades.map(t=>`<div class="item"><span><b>${t.side}</b><small>${dateFmt(t.time)} · close CSV ${fmt(t.price)}</small></span><button class="smallbtn" data-del-paper="${t.id}">Elimina</button></div>`).join(''); }
+function addPaper(side){if(!bars.length)return alert('Importa prima dati OHLC reali.');paperTrades.unshift({id:crypto.randomUUID?.()||String(Date.now()+Math.random()),side,time:Date.now(),price:bars.at(-1).close});renderPaper();}
+$('paperBuy').addEventListener('click',()=>addPaper('BUY')); $('paperSell').addEventListener('click',()=>addPaper('SELL')); $('paperTrades').addEventListener('click',e=>{const id=e.target.dataset.delPaper;if(id){paperTrades=paperTrades.filter(t=>t.id!==id);renderPaper();}}); $('clearPaper').addEventListener('click',()=>{paperTrades=[];renderPaper();});
+$('runBacktest').addEventListener('click',()=>{try{bt=backtest(bars);$('btCount').textContent=String(bt.trades.length);$('btWin').textContent=bt.winRate.toFixed(1)+'%';$('btPoints').textContent=(bt.points>=0?'+':'')+fmt(bt.points);$('backtestList').innerHTML=bt.trades.slice(-15).reverse().map(t=>`<div class="item"><span><b>${t.side}</b><small>${dateFmt(t.entryTime*1000)} → ${dateFmt(t.exitTime*1000)}</small></span><b style="color:${t.points>=0?'#3ed598':'#ff6f7d'}">${t.points>=0?'+':''}${fmt(t.points)}</b></div>`).join('')||'<div class="item">Nessuna operazione con queste regole.</div>';$('backtestNotes').textContent='Risultato lordo in punti di prezzo, non percentuale del conto. Nessun costo di trading, slippage, spread o verifica out-of-sample inclusi. Non indica redditività futura.';}catch(e){$('backtestNotes').textContent=e.message;}});
+$('exportBacktest').addEventListener('click',()=>{if(!bt)return alert('Esegui prima il backtest.');download('nello-signal-backtest.csv','side,entry_time,entry,exit_time,exit,points\n'+bt.trades.map(t=>[t.side,new Date(t.entryTime*1000).toISOString(),t.entry,new Date(t.exitTime*1000).toISOString(),t.exit,t.points].join(',')).join('\n'));});
+function renderSignalHistory(){ $('signalHistory').innerHTML=signalHistory.map(s=>`<div class="item"><span><b>${s.signal}</b><small>${dateFmt(s.time)} · ${s.tf} · close ${fmt(s.close)}</small></span></div>`).join('')||'<div class="item">Nessun segnale calcolato.</div>'; } $('clearSignalHistory').addEventListener('click',()=>{signalHistory=[];renderSignalHistory();});
+$('chartPhoto').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;if(!f.type.startsWith('image/')){$('photoStatus').textContent='Seleziona un file immagine valido.';return;}const old=$('photoPreview').dataset.url;if(old)URL.revokeObjectURL(old);const url=URL.createObjectURL(f);$('photoPreview').src=url;$('photoPreview').dataset.url=url;$('photoPreview').classList.remove('hidden');$('photoStatus').textContent=`Anteprima locale: ${f.name} (${Math.round(f.size/1024)} KB). Nessuna AI eseguita e nessun upload effettuato.`;});$('confirmImagePrivacy').addEventListener('change',e=>$('visionChecklist').textContent=e.target.checked?'Conferma registrata localmente: analisi AI non configurata.':'Funzione AI: non configurata.');
+function runChecks(){const checks=[['Nessun prezzo inventato all’avvio',$('spotPrice').textContent==='—'],['Segnale prudente senza candele',bars.length>0||$('signalText').textContent==='STAI FERMO'],['CSV valido solo con almeno 30 candele',bars.length===0||bars.length>=30],['Nessun ordine broker attivo',true],['Analisi AI non dichiarata attiva',$('photoStatus').textContent.includes('Nessuna immagine')||$('photoStatus').textContent.includes('Nessuna AI')||$('photoStatus').textContent.includes('Anteprima locale')],['Spot non dichiarato come prezzo eseguibile',true]];$('healthList').innerHTML=checks.map(c=>`<div class="item"><span>${c[0]}</span><b style="color:${c[1]?'#3ed598':'#ff6f7d'}">${c[1]?'PASS':'FAIL'}</b></div>`).join('');return checks;}
+$('runChecks').addEventListener('click',runChecks);$('downloadReport').addEventListener('click',()=>{const c=runChecks();download('nello-signal-test-report.txt','Nello Signal - test locali\n'+new Date().toISOString()+'\n\n'+c.map(x=>`${x[1]?'PASS':'FAIL'} - ${x[0]}`).join('\n')+'\n\nI test non verificano la redditività.');});
+function download(name,content){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tabpane').forEach(x=>x.classList.toggle('hidden',x.id!=='tab-'+b.dataset.tab));}));
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+renderBars();renderPaper();runChecks();
+
+</script>
+</body></html>
